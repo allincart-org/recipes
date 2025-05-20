@@ -1,0 +1,157 @@
+{
+    "aliases": {
+        "code-quality": "frosh/code-quality-meta",
+        "codequality": "frosh/code-quality-meta",
+        "console": "symfony/console",
+        "debug-bundle": "symfony/debug-bundle",
+        "debugbundle": "symfony/debug-bundle",
+        "dev-tools": "allincart/dev-tools",
+        "devenv": "frosh/devenv-meta",
+        "devtools": "allincart/dev-tools",
+        "framework-bundle": "symfony/framework-bundle",
+        "frameworkbundle": "symfony/framework-bundle",
+        "gitpod": "frosh/gitpod-meta",
+        "log": "symfony/monolog-bundle",
+        "logger": "symfony/monolog-bundle",
+        "logging": "symfony/monolog-bundle",
+        "logs": "symfony/monolog-bundle",
+        "mail": "symfony/mailer",
+        "mailer": "symfony/mailer",
+        "messenger": "symfony/messenger",
+        "monolog": "symfony/monolog-bundle",
+        "monolog-bundle": "symfony/monolog-bundle",
+        "monologbundle": "symfony/monolog-bundle",
+        "routing": "symfony/routing",
+        "schedule": "symfony/scheduler",
+        "scheduler": "symfony/scheduler",
+        "scheduling": "symfony/scheduler",
+        "translation": "symfony/translation",
+        "twig-bundle": "symfony/twig-bundle",
+        "twigbundle": "symfony/twig-bundle",
+        "validation": "symfony/validator",
+        "validator": "symfony/validator"
+    },
+    "recipes": {
+        "allincart/administration": [
+            "6.7"
+        ],
+        "allincart/core": [
+            "6.7"
+        ],
+        "allincart/elasticsearch": [
+            "6.7"
+        ],
+        "allincart/platform": [
+            "6.7"
+        ],
+        "allincart/storefront": [
+            "6.7"
+        ],
+        "doctrine/annotations": [
+            "1.0"
+        ],
+        "enqueue/dbal": [
+            "0.10"
+        ],
+        "enqueue/enqueue-bundle": [
+            "0.10"
+        ],
+        "enqueue/redis": [
+            "0.10"
+        ],
+        "frosh/code-quality-meta": [
+            "0.1",
+            "0.2",
+            "0.3",
+            "0.4",
+            "0.5"
+        ],
+        "frosh/devenv-meta": [
+            "0.1",
+            "0.2",
+            "0.3"
+        ],
+        "frosh/gitpod-meta": [
+            "6.4"
+        ],
+        "nyholm/psr7": [
+            "1.0"
+        ],
+        "open-telemetry/opentelemetry-logger-monolog": [
+            "1.0"
+        ],
+        "pentatrion/vite-bundle": [
+            "6.5"
+        ],
+        "sroze/messenger-enqueue-transport": [
+            "0.4"
+        ],
+        "symfony/console": [
+            "5.4"
+        ],
+        "symfony/debug-bundle": [
+            "5.3"
+        ],
+        "symfony/framework-bundle": [
+            "5.4",
+            "6.4"
+        ],
+        "symfony/mailer": [
+            "4.3"
+        ],
+        "symfony/messenger": [
+            "5.4",
+            "6.0"
+        ],
+        "symfony/monolog-bundle": [
+            "3.3"
+        ],
+        "symfony/routing": [
+            "5.4",
+            "6.4"
+        ],
+        "symfony/scheduler": [
+            "7.2"
+        ],
+        "symfony/translation": [
+            "5.4"
+        ],
+        "symfony/twig-bundle": [
+            "5.4"
+        ],
+        "symfony/validator": [
+            "5.3"
+        ]
+    },
+    "recipe-conflicts": {
+        "nyholm/psr7": {
+            "1.0": {
+                "php-http/discovery": ">=1.18"
+            }
+        },
+        "symfony/messenger": {
+            "5.4": {
+                "symfony/framework-bundle": "<4.3"
+            },
+            "6.0": {
+                "symfony/framework-bundle": "<4.3"
+            }
+        },
+        "symfony/validator": {
+            "5.3": {
+                "symfony/framework-bundle": "<5.3"
+            }
+        }
+    },
+    "versions": [],
+    "branch": "main",
+    "is_contrib": true,
+    "_links": {
+        "repository": "github.com/allincart-org/recipes",
+        "origin_template": "{package}:{version}@github.com/allincart-org/recipes:main",
+        "recipe_template": "https://raw.githubusercontent.com/allincart-org/recipes/flex/main/{package_dotted}.{version}.json",
+        "recipe_template_relative": "{package_dotted}.{version}.json",
+        "archived_recipes_template": "https://raw.githubusercontent.com/allincart-org/recipes/flex/main/archived/{package_dotted}/{ref}.json",
+        "archived_recipes_template_relative": "archived/{package_dotted}/{ref}.json"
+    }
+}
