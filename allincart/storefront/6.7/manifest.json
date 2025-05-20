@@ -1,0 +1,15 @@
+{
+    "bundles": {
+        "Allincart\\Storefront\\Storefront": [
+            "all"
+        ]
+    },
+    "copy-from-recipe": {
+        "bin/": "%BIN_DIR%/"
+    },
+    "env": {
+        "PROXY_URL": "http://localhost",
+        "ALLINCART_HTTP_CACHE_ENABLED": "1",
+        "ALLINCART_HTTP_DEFAULT_TTL": "7200"
+    }
+}

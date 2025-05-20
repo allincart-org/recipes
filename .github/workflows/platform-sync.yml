@@ -1,0 +1,32 @@
+name: Update allincart/platform package
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+        paths:
+            - "allincart-org/administration/**"
+            - "allincart-org/core/**"
+            - "allincart-org/storefront/**"
+            - "allincart-org/elasticsearch/**"
+jobs:
+    platform-sync:
+        runs-on: ubuntu-latest
+        concurrency: platform-sync-${{ github.ref }}
+        name: Sync files for allincart-org/allincart package
+        steps:
+            - name: Clone
+              uses: actions/checkout@v4
+              with:
+                token: ${{ secrets.CI_COMMIT_PAT }}
+
+            - name: Sync files
+              run: php .github/sync-platform.php
+
+            - name: Add files to git
+              run: git add .
+
+            - name: Update allincart/platform package
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                commit_message: 'chore: update allincart-org/allincart package'

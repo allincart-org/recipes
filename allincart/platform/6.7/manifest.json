@@ -1,0 +1,137 @@
+{
+    "copy-from-recipe": {
+        "bin\/": "%BIN_DIR%\/",
+        "config\/": "%CONFIG_DIR%\/",
+        "custom\/": "custom\/",
+        "files\/": "files\/",
+        "public\/": "%PUBLIC_DIR%\/",
+        "var\/": "var\/",
+        "src\/": "src\/",
+        "root\/": ""
+    },
+    "bundles": {
+        "Allincart\\Core\\Framework\\Framework": [
+            "all"
+        ],
+        "Allincart\\Core\\System\\System": [
+            "all"
+        ],
+        "Allincart\\Core\\Content\\Content": [
+            "all"
+        ],
+        "Allincart\\Core\\Checkout\\Checkout": [
+            "all"
+        ],
+        "Allincart\\Core\\Maintenance\\Maintenance": [
+            "all"
+        ],
+        "Allincart\\Core\\DevOps\\DevOps": [
+            "e2e"
+        ],
+        "Allincart\\Core\\Profiling\\Profiling": [
+            "all"
+        ],
+        "Allincart\\Core\\Service\\Service": [
+            "all"
+        ],
+        "Allincart\\Administration\\Administration": [
+            "all"
+        ],
+        "Allincart\\Storefront\\Storefront": [
+            "all"
+        ],
+        "Allincart\\Elasticsearch\\Elasticsearch": [
+            "all"
+        ]
+    },
+    "container": {
+        "allincart.store.frw": true,
+        "default_cdn_strategy": "physical_filename",
+        "allincart.cdn.strategy": "%env(default:default_cdn_strategy:ALLINCART_CDN_STRATEGY_DEFAULT)%",
+        "env(OPENSEARCH_URL)": "http:\/\/localhost:9200"
+    },
+    "env": {
+        "APP_ENV": "prod",
+        "APP_URL": "http:\/\/127.0.0.1:8000",
+        "APP_SECRET": "",
+        "INSTANCE_ID": "%generate(secret)%",
+        "BLUE_GREEN_DEPLOYMENT": "0",
+        "DATABASE_URL": "mysql:\/\/root:root@localhost\/allincart",
+        "PROXY_URL": "http:\/\/localhost",
+        "ALLINCART_HTTP_CACHE_ENABLED": "1",
+        "ALLINCART_HTTP_DEFAULT_TTL": "7200",
+        "OPENSEARCH_URL": "http:\/\/localhost:9200",
+        "ALLINCART_ES_ENABLED": "0",
+        "ALLINCART_ES_INDEXING_ENABLED": "0",
+        "ALLINCART_ES_INDEX_PREFIX": "sw",
+        "ALLINCART_ES_THROW_EXCEPTION": "1"
+    },
+    "dotenv": {
+        "local": {
+            "APP_SECRET": "%generate(secret)%"
+        }
+    },
+    "gitignore": [
+        ".env.local",
+        ".env.local.php",
+        ".env.*.local",
+        "\/public\/bundles\/*",
+        "\/public\/media\/*",
+        "\/public\/theme\/*",
+        "\/public\/thumbnail\/*",
+        "\/public\/sitemap\/*",
+        "\/files\/*",
+        "!\/files\/.htaccess",
+        "\/var\/*",
+        "!\/var\/.htaccess",
+        "\/auth.json",
+        "\/install.lock",
+        "public\/asset-manifest.json"
+    ],
+    "composer-scripts": {
+        "assets:install": "symfony-cmd"
+    },
+    "docker-compose": {
+        "docker-compose.yml": {
+            "services": [
+                "database:",
+                "  image: mariadb:11.4",
+                "  environment:",
+                "    MARIADB_DATABASE: allincart",
+                "    MARIADB_ROOT_PASSWORD: root",
+                "    MARIADB_USER: allincart",
+                "    MARIADB_PASSWORD: allincart",
+                "  volumes:",
+                "    - db-data:\/var\/lib\/mysql:rw",
+                "  healthcheck:",
+                "    test: [ \"CMD\", \"mariadb-admin\" ,\"ping\", \"-h\", \"localhost\", \"-proot\" ]",
+                "    start_period: 10s",
+                "    start_interval: 3s",
+                "    interval: 5s",
+                "    timeout: 1s",
+                "    retries: 10",
+                "opensearch:",
+                "  image: opensearchproject\/opensearch:2",
+                "  volumes:",
+                "    - opensearch-data:\/usr\/share\/opensearch\/data",
+                "  environment:",
+                "    discovery.type: single-node",
+                "    plugins.security.disabled: 'true'"
+            ],
+            "volumes": [
+                "db-data:",
+                "opensearch-data:"
+            ]
+        },
+        "docker-compose.override.yml": {
+            "services": [
+                "database:",
+                "  ports:",
+                "    - \"3306\"",
+                "opensearch:",
+                "  ports:",
+                "    - \"9200\""
+            ]
+        }
+    }
+}
