@@ -1,6 +1,6 @@
 {
     "bundles": {
-        "Shopware\\Administration\\Administration": [
+        "Allincart\\Administration\\Administration": [
             "all"
         ]
     },
